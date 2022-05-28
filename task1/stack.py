@@ -39,7 +39,7 @@ class Stack:
 
         # Sanitary check to see if we
         # are peeking an empty stack.
-        if self.isEmpty():
+        if self.empty():
             raise EmptyStackException("Peeking from an empty stack")
         return self.head.next.value
 
