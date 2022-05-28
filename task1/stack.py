@@ -15,7 +15,7 @@ class Stack:
     # easier for handling edge cases.
     def __init__(self):
         self.head = Node("head")
-        self.size = 0
+        self.size_of_stack = 0
 
     # String representation of the stack
     def __str__(self):
@@ -28,11 +28,11 @@ class Stack:
 
     # Get the current size of the stack
     def size(self):
-        return self.size
+        return self.size_of_stack
 
     # Check if the stack is empty
     def empty(self):
-        return self.size == 0
+        return self.size_of_stack == 0
 
     # Get the top item of the stack
     def peek(self):
@@ -50,7 +50,7 @@ class Stack:
         node = Node(value)
         node.next = self.head.next
         self.head.next = node
-        self.size += 1
+        self.size_of_stack += 1
 
     # Remove a value from the stack and return.
     def pop(self):
@@ -58,5 +58,5 @@ class Stack:
             raise EmptyStackException("Popping from an empty stack")
         remove = self.head.next
         self.head.next = self.head.next.next
-        self.size -= 1
+        self.size_of_stack -= 1
         return remove.value
