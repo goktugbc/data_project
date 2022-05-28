@@ -1,6 +1,6 @@
 class EmptyStackException(Exception):
     """
-    Exception raised for pushing None element into a stack
+    Exception raised for getting an element from an empty stack
     """
 
     def __init__(self, message="The stack is empty"):
