@@ -10,17 +10,32 @@ class JsonRecord(Record):
         super().__init__(name, data)
 
     def generate_file(self):
-        pass
+        import os
+
+        tmp_path = "tmp/"
+
+        if not os.path.exists(tmp_path):
+            os.makedirs(tmp_path)
+
+        filename = self.name + ".json"
+        f = open(tmp_path + filename, "w")
+        f.write(self.dump_data())
+        f.close()
+
+    def delete_file(self):
+        import os
+        filename = self.name + ".json"
+        os.remove("tmp/" + filename)
 
     def dump_data(self):
         try:
             return json.dumps(self.data)
-        except TypeError as e:
+        except TypeError:
             raise WrongFormatException("Data you are trying to dump is in wrong format.")
 
     def load_data(self):
         try:
             return json.loads(self.data)
-        except TypeError as e:
+        except TypeError:
             raise WrongFormatException("Data you are trying to load is in wrong format.")
 

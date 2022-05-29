@@ -14,6 +14,10 @@ class Record(ABC):
         pass
 
     @abstractmethod
+    def delete_file(self):
+        pass
+
+    @abstractmethod
     def dump_data(self):
         pass
 
