@@ -11,7 +11,7 @@ def create_record(record_format, name, data):
     if record_format not in constants.available_formats:
         raise UnsupportedFormatException
 
-    return constants.data_creator_mapper[record_format](name, data).create_record()
+    return constants.data_creator_mapper[record_format]().create_record(name, data)
 
 
 def get_storage(type, config):

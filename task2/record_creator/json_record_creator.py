@@ -4,8 +4,8 @@ from task2.record_creator.record.json_record import JsonRecord
 
 class JsonRecordCreator(RecordCreator):
 
-    def __init__(self, name, data):
-        super().__init__(name, data)
+    def __init__(self):
+        super().__init__()
 
-    def create_record(self):
-        return JsonRecord(name=self.name, data=self.data)
+    def create_record(self, name, data):
+        return JsonRecord(name=name, data=data)

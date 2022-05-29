@@ -85,6 +85,5 @@ class StackTester(unittest.TestCase):
             self.assertEqual(EmptyStackException, type(e))
 
 
-
 if __name__ == '__main__':
     unittest.main()

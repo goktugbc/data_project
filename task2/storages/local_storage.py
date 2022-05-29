@@ -36,8 +36,9 @@ class LocalStorage(Storage):
         record_format = filename.split(".")[-1]
         f = open(self.local_path + filename, "r")
         data = f.read().strip()
+        f.close()
 
-        record = constants.data_creator_mapper[record_format](name, data).create_record()
+        record = constants.data_creator_mapper[record_format]().create_record(name, data)
         record.data = record.load_data()
 
         return record
@@ -66,7 +67,7 @@ class LocalStorage(Storage):
 
             return record
 
-    def filter_records(self, record_format, limit, offset):
+    def filter_records(self, record_format, limit=None, offset=0):
         import os
 
         record_names = []
@@ -84,7 +85,7 @@ class LocalStorage(Storage):
         if offset > limit:
             raise LimitOffsetIncompatibility
 
-        record_names = record_names[offset:limit]
+        record_names = record_names[offset:limit+1]
 
         for record_name in record_names:
             records.append(self.retrieve_record(record_name))

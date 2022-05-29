@@ -2,14 +2,10 @@ from abc import ABC, abstractmethod
 
 
 class RecordCreator(ABC):
-    name = ""
-    data = None
-    filename = ""
 
-    def __init__(self, name, data):
-        self.name = name
-        self.data = data
+    def __init__(self):
+        pass
 
     @abstractmethod
-    def create_record(self):
+    def create_record(self, name, data):
         pass

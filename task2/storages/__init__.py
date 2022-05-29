@@ -32,7 +32,7 @@ class Storage(ABC):
         pass
 
     @abstractmethod
-    def filter_records(self, record_format, limit, offset):
+    def filter_records(self, record_format, limit=None, offset=0):
         pass
 
     @abstractmethod
