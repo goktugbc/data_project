@@ -65,38 +65,6 @@ class RecordTester(unittest.TestCase):
 
         self.assertTrue(isinstance(loaded_data, dict))
 
-    def test_load_data_json_record_wrong_format(self):
-        name = "test"
-        data = {
-            "test": True
-        }
-
-        json_record = JsonRecord(name, data)
-
-        try:
-            loaded_data = json_record.load_data()
-        except Exception as e:
-            self.assertEqual(WrongFormatException, type(e))
-
-        self.assertTrue(False)
-
-    def test_dump_data_json_record_wrong_format(self):
-        name = "test"
-        data = {
-            "test": True
-        }
-
-        json_record = JsonRecord(name, data)
-        dumped_data = json_record.dump_data()
-        json_record.data = dumped_data
-
-        try:
-            dumped_data = json_record.dump_data()
-        except Exception as e:
-            self.assertEqual(WrongFormatException, type(e))
-
-        self.assertTrue(False)
-
 
 if __name__ == '__main__':
     unittest.main()

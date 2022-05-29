@@ -9,13 +9,24 @@ class Record(ABC):
         self.name = name
         self.data = data
 
-    @abstractmethod
     def generate_file(self):
-        pass
+        import os
 
-    @abstractmethod
+        tmp_path = "tmp/"
+
+        if not os.path.exists(tmp_path):
+            os.makedirs(tmp_path)
+
+        f = open(tmp_path + self.filename, "w")
+        f.write(self.dump_data())
+        f.close()
+
+        return tmp_path + self.filename
+
     def delete_file(self):
-        pass
+        import os
+        filename = self.name + ".json"
+        os.remove("tmp/" + filename)
 
     @abstractmethod
     def dump_data(self):

@@ -10,25 +10,6 @@ class JsonRecord(Record):
         super().__init__(name, data)
         self.filename = self.name + ".json"
 
-    def generate_file(self):
-        import os
-
-        tmp_path = "tmp/"
-
-        if not os.path.exists(tmp_path):
-            os.makedirs(tmp_path)
-
-        f = open(tmp_path + self.filename, "w")
-        f.write(self.dump_data())
-        f.close()
-
-        return tmp_path + self.filename
-
-    def delete_file(self):
-        import os
-        filename = self.name + ".json"
-        os.remove("tmp/" + filename)
-
     def dump_data(self):
         try:
             return json.dumps(self.data)
