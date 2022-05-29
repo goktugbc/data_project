@@ -1,7 +1,7 @@
-#available data formats
 from task2.record_creator.json_record_creator import JsonRecordCreator
 from task2.storages.local_storage import LocalStorage
 
+#available data formats
 available_formats = ["json"]
 
 data_creator_mapper = {

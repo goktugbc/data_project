@@ -7,11 +7,11 @@ from task2.exceptions import UnsupportedFormatException, UnsupportedStorageTypeE
 Version = __version__
 
 
-def create_record(format, name, data):
-    if format not in constants.available_formats:
+def create_record(record_format, name, data):
+    if record_format not in constants.available_formats:
         raise UnsupportedFormatException
 
-    return constants.data_creator_mapper[format](name, data).create_record()
+    return constants.data_creator_mapper[record_format](name, data).create_record()
 
 
 def get_storage(type, config):
@@ -20,20 +20,26 @@ def get_storage(type, config):
 
     return constants.storage_generator_mapper[type](config).get_storage()
 
-def insert_record(record):
-    pass
 
-def insert_records(records):
-    pass
+def insert_record(storage, record):
+    storage.insert_record(record)
 
-def retrieve_record(name):
-    pass
 
-def filter_records(format, limit, offset):
-    pass
+def insert_records(storage, records):
+    storage.insert_records(records)
 
-def update_record(name, record):
-    pass
 
-def delete_record(name):
-    pass
+def retrieve_record(storage, filename):
+    storage.retrieve_record(filename)
+
+
+def filter_records(storage, record_format, limit=None, offset=0):
+    storage.filter_records(record_format, limit, offset)
+
+
+def update_record(storage, filename, record):
+    storage.update_record(filename, record)
+
+
+def delete_record(storage, filename):
+    storage.delete_record(filename)

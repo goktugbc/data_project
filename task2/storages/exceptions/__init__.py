@@ -26,3 +26,13 @@ class RecordNotFound(Exception):
     def __init__(self, message="Record not found."):
         self.message = message
         super().__init__(self.message)
+
+
+class LimitOffsetIncompatibility(Exception):
+    """
+    Exception raised if offset value is greater than limit value
+    """
+
+    def __init__(self, message="Offset cannot be greater than limit."):
+        self.message = message
+        super().__init__(self.message)
