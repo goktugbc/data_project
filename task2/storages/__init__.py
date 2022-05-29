@@ -8,5 +8,5 @@ class Storage(ABC):
         self.config = config
 
     @abstractmethod
-    def create_record(self):
+    def get_storage(self):
         pass
