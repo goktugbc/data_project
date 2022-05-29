@@ -1,7 +1,6 @@
 import unittest
 
-from task1.exceptions.EmptyStackException import EmptyStackException
-from task1.exceptions.NullElementException import NullElementException
+from task1.exceptions import EmptyStackException, NullElementException
 from task1.stack import Stack
 
 
